@@ -1,0 +1,69 @@
+.product-table {
+    margin-top: 30px;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.product-table-heading-tr {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 70px 0 400px;
+}
+
+.product-table-tr {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 30px;
+}
+
+.product-table th {
+    padding: 20px;
+}
+
+.product-table td {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.product-table-img {
+    width: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-table-btn {
+padding: 8px 20px;
+font-size: 1.1rem;
+color: var(--white);
+background-color: var(--mesi);
+border-radius: 10px;
+margin-right: 20px;
+}
+
+/* Start edit Product Child Style */
+.edit-product-form-group {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+    background-color: var(--white-50);
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.edit-product-input {
+    outline: none;
+    border: none;
+    background-color: unset;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 8px 10px;
+
+}
+
+/* End edit Product Child Style */

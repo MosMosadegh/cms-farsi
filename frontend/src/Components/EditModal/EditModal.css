@@ -1,0 +1,19 @@
+.edit-modal-form {
+    background-color: var(--white);
+    width: 400px;
+    text-align: center;
+    padding: 30px;
+}
+
+.edit-modal-form h1 {
+    font-size: 1.3rem;
+}
+
+.edit-form-submit {
+    width: 100%;
+    background-color: var(--mesi);
+    color: var(--white);
+    margin-top: 20px;
+    padding: 8px 10px;
+    font-size: 1.1rem;
+}

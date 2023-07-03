@@ -1,0 +1,45 @@
+.sidbar {
+    position: fixed;
+    background-color: var(--mesi);
+    height: 100vh;
+    flex: 1;
+}
+
+.sidbar-title {
+    color: var(--white);
+    padding: 15px;
+    font-size: 1.4rem;
+    text-align: right;
+    border-bottom: 2px solid #f1c40f;
+}
+
+.sidbar-link {
+margin-top: 20px;
+}
+
+.sidbar-link li {
+    position: relative;
+    padding: 15px;
+}
+
+.sidbar-link li a {
+    width: 100%;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.icon {
+    margin-left: 10px;
+}
+
+.sidbar-link li.active {
+    background-color: #e67e22;
+}
+
+.sidbar-link li:first-child {
+    margin-bottom: 20px;
+}

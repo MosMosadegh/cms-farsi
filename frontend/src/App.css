@@ -1,0 +1,9 @@
+
+.sidebar {
+    flex: 1;
+}
+.main {
+    flex: 4;
+    padding: 20px;
+    padding-right: 260px;
+}

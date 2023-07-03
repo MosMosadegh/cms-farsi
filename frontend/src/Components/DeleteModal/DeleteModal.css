@@ -1,0 +1,32 @@
+
+.delete-modal {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.delete-modal h1 {
+    font-size: 1.5rem;
+}
+
+.delete-modal-btn {
+    display: flex;
+    column-gap: 20px;
+}
+
+.delete-btn {
+    width: 100%;
+    margin-top: 30px;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+
+.delete-modal-accept-btn {
+    background-color: var(--mesi);
+    color: var(--white);
+    width: 100%;
+}
