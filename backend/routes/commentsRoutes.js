@@ -1,5 +1,5 @@
 const express = require("express");
-const SabzLearnShopDB = require("./../db/SabzLearnShop");
+const MostafaShopDB = require("./../db/MostafaShop");
 
 const commentsRouter = express.Router();
 
@@ -8,7 +8,7 @@ const commentsRouter = express.Router();
 commentsRouter.get("/", (req, res) => {
   let selectAllCommentsQuery = `SELECT Comments.id, Comments.isAccept , Comments.body, Comments.date, Comments.hour, Users.firsname as userID, Products.title as productID FROM Comments INNER JOIN Users ON Users.id = Comments.userID INNER JOIN Products ON Products.id = Comments.productID`;
 
-  SabzLearnShopDB.query(selectAllCommentsQuery, (err, result) => {
+  MostafaShopDB.query(selectAllCommentsQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {
@@ -21,7 +21,7 @@ commentsRouter.delete("/:commentID", (req, res) => {
   let commentID = req.params.commentID;
 
   let deleteCommentQuery = `DELETE FROM Comments WHERE id = ${commentID}`;
-  SabzLearnShopDB.query(deleteCommentQuery, (err, result) => {
+  MostafaShopDB.query(deleteCommentQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {
@@ -34,7 +34,7 @@ commentsRouter.put("/:commentID", (req, res) => {
   let commentID = req.params.commentID;
   let editCommentQuery = `UPDATE Comments SET body="${req.body.body}" WHERE id = ${commentID}`;
 
-  SabzLearnShopDB.query(editCommentQuery, (err, result) => {
+  MostafaShopDB.query(editCommentQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {
@@ -48,7 +48,7 @@ commentsRouter.post("/accept/:commentID", (req, res) => {
   console.log(commentID);
   let editCommentQuery = `UPDATE Comments SET isAccept = 1 WHERE id = ${commentID}`;
 
-  SabzLearnShopDB.query(editCommentQuery, (err, result) => {
+  MostafaShopDB.query(editCommentQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {
@@ -62,7 +62,7 @@ commentsRouter.post("/reject/:commentID", (req, res) => {
   console.log(commentID);
   let editCommentQuery = `UPDATE Comments SET isAccept = 0 WHERE id = ${commentID}`;
 
-  SabzLearnShopDB.query(editCommentQuery, (err, result) => {
+  MostafaShopDB.query(editCommentQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {

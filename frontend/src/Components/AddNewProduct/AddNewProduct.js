@@ -4,6 +4,8 @@ import { BiDollar } from "react-icons/bi";
 import { VscSymbolColor } from "react-icons/vsc";
 import { BsBag, BsFillBarChartLineFill } from "react-icons/bs";
 import { AiOutlinePicture, AiOutlineStar } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./AddNewProduct.css";
 export default function AddNewProduct({ getAllProduct }) {
@@ -15,6 +17,7 @@ export default function AddNewProduct({ getAllProduct }) {
   const [newProductSale, setNewProductSale] = useState("");
   const [newProductColors, setNewProductColors] = useState("");
   const [newProductDesc, setNewProductDesc] = useState("");
+  const notifyAddProductToast = () => toast.success("محصول جدید به دیتابیس اضافه شد", {theme: "colored",})
 
   const newProductObj = {
     title: newProductTitle,
@@ -40,6 +43,7 @@ export default function AddNewProduct({ getAllProduct }) {
   .then((response) => response.json())
   .then((json) => {
     console.log(json)
+    notifyAddProductToast()
     getAllProduct()
     emptyInput()
   })
@@ -161,6 +165,7 @@ export default function AddNewProduct({ getAllProduct }) {
         <button className="add-products-submit" onClick={addNewProduct}>
           ثبت محصول
         </button>
+        <ToastContainer />
       </form>
     </div>
   );

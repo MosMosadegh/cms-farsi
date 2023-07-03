@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailModal from "../DetailModal/DetailModal";
@@ -26,6 +26,8 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
   const [productNewSale, setProductNewSale] = useState("");
   const [productNewColors, setProductNewColors] = useState("");
 
+  const notifyDeleteProductToast = () => toast.error("محصول از دیتابیس پاک شد", {theme: 'colored'});
+  const notifyUpdateProductToast = () => toast.success("محصول در دیتابیس ویرایش شد",{theme: "dark",});
 
 
   const deleteModalCancelAction = () => {
@@ -33,7 +35,6 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
     setIsShowDeleteModal(false);
   };
 
-  const notifyDeleteProductToast = () => toast("محصول از دیتابیس پاک شد");
 
   const deleteModalSubmitAction = () => {
     console.log("مدال تایید شد");
@@ -82,6 +83,7 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
   .then((response) => response.json())
   .then((json) => {
     setIsShowEditModal(false);
+    notifyUpdateProductToast()
     getAllProduct();
   });
 

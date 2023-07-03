@@ -1,5 +1,5 @@
 const express = require("express");
-const SabzLearnShopDB = require("./../db/SabzLearnShop");
+const MostafaShopDB = require("./../db/MostafaShop");
 
 const adminsRouter = express.Router();
 
@@ -10,7 +10,7 @@ adminsRouter.get("/", (req, res) => {
 
   let selectMainAdminQuery = `SELECT * FROM Admins WHERE token = "${adminToken}"`;
 
-  SabzLearnShopDB.query(selectMainAdminQuery, (err, result) => {
+  MostafaShopDB.query(selectMainAdminQuery, (err, result) => {
     if (err) {
       res.send(null);
     } else {
