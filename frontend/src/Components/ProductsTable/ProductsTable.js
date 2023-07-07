@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 
 import DeleteModal from "../DeleteModal/DeleteModal";
 import DetailModal from "../DetailModal/DetailModal";
@@ -14,7 +14,7 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [isShowDetailModal, setIsShowDetailModal] = useState(false);
   const [isShowEditModal, setIsShowEditModal] = useState(false);
-  
+
   const [productID, setProductID] = useState(null);
   const [mainProductInfos, setMainProductInfos] = useState({});
 
@@ -26,16 +26,29 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
   const [productNewSale, setProductNewSale] = useState("");
   const [productNewColors, setProductNewColors] = useState("");
 
-  const notifyDeleteProductToast = () => toast.error("محصول از دیتابیس پاک شد", {theme: 'colored'});
-  const notifyUpdateProductToast = () => toast.success("محصول در دیتابیس ویرایش شد",{theme: "dark",});
-
-
-  const deleteModalCancelAction = () => {
+  // Start Close Function //
+  const closeDeleteModal = () => {
     console.log("مدال کنسل شد");
     setIsShowDeleteModal(false);
   };
+  const closeDetailModal = () => {
+    setIsShowDetailModal(false);
+    console.log("مدال جزییات بسته شد");
+  };
+  const closeEditModal = () => {
+    setIsShowEditModal(false);
+    console.log("مدال ویرایش بسته شد");
+  };
+  // Finish Close Function //
 
+  // Start Toast Function //
+  const notifyDeleteProductToast = () =>
+    toast.error("محصول از دیتابیس پاک شد", { theme: "colored" });
+  const notifyUpdateProductToast = () =>
+    toast.success("محصول در دیتابیس ویرایش شد", { theme: "dark" });
+  //Finish  Toast Function //
 
+  // Start SubmitAction Function //
   const deleteModalSubmitAction = () => {
     console.log("مدال تایید شد");
     console.log(productID);
@@ -49,21 +62,12 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
         getAllProduct();
       });
   };
-
-  const closeDetailModal = () => {
-    setIsShowDetailModal(false);
-    console.log("مدال جزییات بسته شد");
-  };
-
-  const closeEditModal = () => {
-    setIsShowEditModal(false);
-    console.log("مدال ویرایش بسته شد");
-  };
-
+  
   const updateProductInfo = (event) => {
     event.preventDefault();
+    console.log("محصول ویرایش شد");
 
-    const newupdatedObj = {
+    const newUpdatedObj = {
       title: productNewTitle,
       price: productNewPrice,
       count: productNewCount,
@@ -71,25 +75,25 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
       popularity: productNewPopularity,
       sale: productNewSale,
       colors: productNewColors,
-    }
+    };
 
     fetch(`http://localhost:8000/api/products/${productID}`, {
-  method: 'PUT',
-  body: JSON.stringify(newupdatedObj),
-  headers: {
-    'Content-Type': 'application/json; charset=UTF-8',
-  },
-})
-  .then((response) => response.json())
-  .then((json) => {
-    setIsShowEditModal(false);
-    notifyUpdateProductToast()
-    getAllProduct();
-  });
-
-    console.log("محصول ویرایش شد");
+      method: "PUT",
+      body: JSON.stringify(newUpdatedObj),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setIsShowEditModal(false);
+        notifyUpdateProductToast();
+        getAllProduct();
+      });
   };
+  // Finish SubmitAction Function //
 
+  
   return (
     <>
       {allProduct.length ? (
@@ -165,8 +169,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
 
       {isShowDeleteModal && (
         <DeleteModal
+          title={"آیا از حذف اطمینان دارید؟"}
           submitAction={deleteModalSubmitAction}
-          cancelAction={deleteModalCancelAction}
+          cancelAction={closeDeleteModal}
         />
       )}
       {isShowDetailModal && (
@@ -200,7 +205,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="عنوان جدید را وارد کنید"
               className="edit-product-input"
               value={productNewTitle}
-              onChange={(e)=>{setProductNewTitle(e.target.value)}}
+              onChange={(e) => {
+                setProductNewTitle(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -212,7 +219,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="مبلغ جدید را وارد کنید"
               className="edit-product-input"
               value={productNewPrice.toLocaleString()}
-              onChange={(e)=>{setProductNewPrice(e.target.value)}}
+              onChange={(e) => {
+                setProductNewPrice(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -224,7 +233,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="موجودی جدید را وارد کنید"
               className="edit-product-input"
               value={productNewCount}
-              onChange={(e)=>{setProductNewCount(e.target.value)}}
+              onChange={(e) => {
+                setProductNewCount(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -236,7 +247,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="آدرس کاور جدید را وارد کنید"
               className="edit-product-input"
               value={productNewImg}
-              onChange={(e)=>{setProductNewImg(e.target.value)}}
+              onChange={(e) => {
+                setProductNewImg(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -248,7 +261,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="میزان محبوبیت جدید را وارد کنید"
               className="edit-product-input"
               value={productNewPopularity}
-              onChange={(e)=>{setProductNewPopularity(e.target.value)}}
+              onChange={(e) => {
+                setProductNewPopularity(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -260,7 +275,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="میزان فروش جدید را وارد کنید"
               className="edit-product-input"
               value={productNewSale.toLocaleString()}
-              onChange={(e)=>{setProductNewSale(e.target.value)}}
+              onChange={(e) => {
+                setProductNewSale(e.target.value);
+              }}
             />
           </div>
           <div className="edit-product-form-group">
@@ -272,7 +289,9 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
               placeholder="تعداد رنگ جدید را وارد کنید"
               className="edit-product-input"
               value={productNewColors}
-              onChange={(e)=>{setProductNewColors(e.target.value)}}
+              onChange={(e) => {
+                setProductNewColors(e.target.value);
+              }}
             />
           </div>
         </EditModal>

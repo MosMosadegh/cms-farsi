@@ -17,12 +17,12 @@
 margin-top: 20px;
 }
 
-.sidbar-link li {
+.sidbar-link a {
     position: relative;
     padding: 15px;
 }
 
-.sidbar-link li a {
+.sidbar-link a {
     width: 100%;
     color: var(--white);
     text-decoration: none;
@@ -32,14 +32,20 @@ margin-top: 20px;
     font-size: 1.3rem;
 }
 
+.sidbar-link a:hover {
+    background-color: #e67e22;
+    color: var(--white-50);
+}
+
 .icon {
     margin-left: 10px;
 }
 
-.sidbar-link li.active {
+.sidbar-link a.active {
     background-color: #e67e22;
+    color: var(--white-50);
 }
 
-.sidbar-link li:first-child {
+.sidbar-link a:first-child {
     margin-bottom: 20px;
 }
