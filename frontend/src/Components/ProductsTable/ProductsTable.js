@@ -62,7 +62,7 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
         getAllProduct();
       });
   };
-  
+
   const updateProductInfo = (event) => {
     event.preventDefault();
     console.log("محصول ویرایش شد");
@@ -93,79 +93,84 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
   };
   // Finish SubmitAction Function //
 
-  
   return (
-    <>
+    <div>
       {allProduct.length ? (
-        <table className="product-table">
-          <thead>
-            <tr className="product-table-heading-tr">
-              <th>عکس</th>
-              <th>اسم</th>
-              <th>قیمت</th>
-              <th>موجودی</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allProduct.map((product) => (
-              <tr key={product.id} className="product-table-tr">
-                <td>
-                  <img
-                    src={product.img}
-                    alt="لبتاب Acer"
-                    className="product-table-img"
-                  />
-                </td>
-                <td>{product.title}</td>
-                <td>{product.price.toLocaleString()} تومان</td>
-                <td>{product.count}</td>
-                <td>
-                  <button
-                    className="product-table-btn"
-                    onClick={() => {
-                      setIsShowDetailModal(true);
-                      setMainProductInfos(product);
-                    }}
-                  >
-                    جزییات
-                  </button>
-
-                  <button
-                    className="product-table-btn"
-                    onClick={() => {
-                      setIsShowDeleteModal(true);
-                      setProductID(product.id);
-                    }}
-                  >
-                    حذف
-                  </button>
-                  <ToastContainer />
-
-                  <button
-                    className="product-table-btn"
-                    onClick={() => {
-                      setProductID(product.id);
-                      setProductID(product.id);
-                      setIsShowEditModal(true);
-                      setProductNewTitle(product.title);
-                      setProductNewPrice(product.price);
-                      setProductNewCount(product.count);
-                      setProductNewImg(product.img);
-                      setProductNewPopularity(product.popularity);
-                      setProductNewSale(product.sale);
-                      setProductNewColors(product.colors);
-                    }}
-                  >
-                    ویرایش
-                  </button>
-                </td>
+        <div class="table-responsive rounded-2">
+          <table className="table table-sm table-hover mt-2  product-table">
+            <thead>
+              <tr className="product-table-heading-tr">
+                <th scope="col">عکس</th>
+                <th scope="col">اسم</th>
+                <th scope="col">قیمت</th>
+                <th scope="col">موجودی</th>
+                <th scope="col"></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {allProduct.map((product) => (
+                <tr key={product.id} className=" product-table-tr">
+                  <td className="w-25">
+                    <img
+                      src={product.img}
+                      alt="لبتاب Acer"
+                      className="w-50 product-table-img"
+                    />
+                  </td>
+                  <td className="align-middle">{product.title}</td>
+                  <td className="align-middle">
+                    {product.price.toLocaleString()} تومان
+                  </td>
+                  <td className="align-middle">{product.count}</td>
+                  <td className="align-middle">
+                    <button
+                      className="product-table-btn"
+                      onClick={() => {
+                        setIsShowDetailModal(true);
+                        setMainProductInfos(product);
+                      }}
+                    >
+                      جزییات
+                    </button>
+
+                    <button
+                      className="product-table-btn"
+                      onClick={() => {
+                        setIsShowDeleteModal(true);
+                        setProductID(product.id);
+                      }}
+                    >
+                      حذف
+                    </button>
+
+                    <button
+                      className="product-table-btn"
+                      onClick={() => {
+                        setProductID(product.id);
+                        setProductID(product.id);
+                        setIsShowEditModal(true);
+                        setProductNewTitle(product.title);
+                        setProductNewPrice(product.price);
+                        setProductNewCount(product.count);
+                        setProductNewImg(product.img);
+                        setProductNewPopularity(product.popularity);
+                        setProductNewSale(product.sale);
+                        setProductNewColors(product.colors);
+                      }}
+                    >
+                      ویرایش
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <ErrorBox msg=" هیچ محصولی یافت نشد" />
       )}
+
+      <ToastContainer />
 
       {isShowDeleteModal && (
         <DeleteModal
@@ -296,6 +301,6 @@ export default function ProductsTable({ getAllProduct, allProduct }) {
           </div>
         </EditModal>
       )}
-    </>
+    </div>
   );
 }

@@ -10,7 +10,7 @@ import "./Sidbar.css";
 
 export default function Sidebar() {
   return (
-    <div className="sidbar">
+    <div className="min-vh-100 sticky-md-top sidbar">
       <h1 className="sidbar-title">به داشبورد خود خوش آمدید</h1>
       <ul className="sidbar-link">
         <NavLink to="/">

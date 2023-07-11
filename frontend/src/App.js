@@ -9,15 +9,17 @@ import "./App.css";
 function App() {
   let router = useRoutes(routes);
   return (
-      <>
-      <div className="sidebar">
-        <Sidebar />
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col col-md-3 sidebar">
+          <Sidebar />
+        </div>
+        <div className="col main">
+          <Header />
+          {router}
+        </div>
       </div>
-      <div className="main">
-        <Header />
-        {router}
-      </div>
-      </>
+    </div>
   );
 }
 
