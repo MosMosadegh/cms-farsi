@@ -1,8 +1,8 @@
 .sidbar {
-    position: fixed;
+    /* position: fixed; */
     background-color: var(--mesi);
-    height: 100vh;
-    flex: 1;
+    /* height: 100vh; */
+    /* flex: 1; */
 }
 
 .sidbar-title {

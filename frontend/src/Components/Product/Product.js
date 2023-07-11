@@ -19,10 +19,10 @@ export default function Product() {
   };
 
   return (
-    <>
+    <div className='container-fluid'>
     <AddNewProduct getAllProduct={getAllProduct} />
     
-    <ProductsTable allProduct={allProduct} getAllProduct={getAllProduct} />
-    </>
+    <ProductsTable allProduct={allProduct} getAllProduct={getAllProduct}/>
+    </div>
   )
 }
